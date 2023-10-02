@@ -13,13 +13,14 @@ public class Subject {
 
     public void setState(int state) {
         this.state = state;
+        notifyAllObservers();
     }
 
     public void attach(Observer observer){
         observers.add(observer);
     }
 
-    public void notifyAllObservers(){
+    private void notifyAllObservers(){
         for (Observer observer : observers) {
             observer.update();
         }
