@@ -1,0 +1,19 @@
+package com.designpatterns.business.delegate;
+
+import com.designpatterns.business.lookup.BusinessLookup;
+import com.designpatterns.business.service.BusinessService;
+
+public class BusinessDelegate {
+    private BusinessLookup businessLookup = new BusinessLookup();
+    private BusinessService businessService;
+    private String serviceType;
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    public void doTask() {
+        businessService = businessLookup.getBusinessService(serviceType);
+        businessService.doProcessing();
+    }
+}
